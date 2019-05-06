@@ -69,7 +69,7 @@ gulp.task('scripts2', () =>
     .pipe(gulp.dest('public/js'))
 );
 
-gulp.task('scripts', ['scripts1', 'scripts2']);
+//gulp.task('scripts', ['scripts1', 'scripts2']);
 
 
 //////////////////
@@ -97,21 +97,54 @@ gulp.task('styles2', () =>
     .pipe(server.stream({ match: '**/*.css' }))
 );
 
-gulp.task('styles', ['styles1', 'styles2']);
+//gulp.task('styles', ['styles1', 'styles2']);
 
 
 
 
-gulp.task('build', ['jsindex', 'jsdashboard']);
+//gulp.task('build', ['jsindex', 'jsdashboard']);
 
-gulp.task('start', ['browser-sync'], function() {});
+//gulp.task('start', ['browser-sync'], function() {});
 
-gulp.task('browser-sync', ['nodemon'], function() {
-    browserSync.init(null, {
-        proxy: "https://localhost:8443",
-        files: ["public/**/*.*"],
-        port: 7000,
-    });
+// gulp.task('browser-sync', ['nodemon'], function() {
+//    browserSync.init(null, {
+//        proxy: "https://localhost:8443",
+//        files: ["public/**/*.*"],
+//        port: 7000,
+//    });
+//}); 
+
+gulp.task('style', () =>
+    gulp.src('./src/scss/app.scss')
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(postcss(postcssPlugins))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./build/css/app.css'))
+    .pipe(server.stream({ match: '**/*.css' }))
+);
+
+gulp.task('js', () =>
+    browserify('./src/js/app.js', {
+        standalone: 'app'
+    })
+    .transform(babelify)
+    .bundle()
+    .on('error', function(err) {
+        console.error(err);
+        this.emit('end')
+    })
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./build/js'))
+);
+
+gulp.task('html', () =>{
+    gulp.src('./src/views/index.html')
+        .pipe(gulp.dest('./build/'));
 });
 
 

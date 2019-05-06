@@ -14,6 +14,7 @@ import buffer from 'vinyl-buffer';
 import nodemon from 'gulp-nodemon';
 
 
+
 const postcssPlugins = [
     cssnano({
         core: false, // true for minified output
@@ -121,7 +122,7 @@ gulp.task('style', () =>
     .pipe(sass())
     .pipe(postcss(postcssPlugins))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./build/css/app.css'))
+    .pipe(gulp.dest('./build/css'))
     .pipe(server.stream({ match: '**/*.css' }))
 );
 

@@ -1,37 +1,77 @@
-* {box-sizing: border-box;}
+* {box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 .wrapper {
-  max-width: 90vw;
-  max-height: 99vh;
+  width: 90vw;
+  height: 99vh;
   margin: 0 auto;
 }
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+  display: grid;
+  grid-gap: 1px;
+  grid-template-rows: 80px 40px auto 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "main-header main-header main-header main-header"
+    "main-nav-left main-nav-right main-nav-right main-nav-right"
+    "left-aside main-container main-container main-container"
+    "footer footer footer footer";
   }
-  .one {
-    grid-column: 1 / 3;
-    grid-row: 1;
+
+  @media only screen and (max-width: 640px)  {
+    .wrapper {
+      grid-template-rows: 2fr 1fr 1fr 2fr auto 2fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-areas: 
+        "main-header"
+        "main-nav-right"
+        "main-nav-left"
+        "left-aside"
+        "main-container"
+        "footer";
+      }
   }
-  .two { 
-    grid-column: 2 / 4;
-    grid-row: 1 / 3;
+
+  .wrapper > div {
+    border: 1px solid rgb(233,171,88);
+    border-radius: 2px;
+    background-color: rgba(233,171,88,.5);
+    padding: 1em;
+    color: #d9480f;
   }
-  .three {
-    grid-column: 1;
-    grid-row: 2 / 5;
+  .main-header {
+    grid-area: main-header;
   }
-  .four {
-    grid-column: 3;
-    grid-row: 3;
+  
+  .main-nav-left {
+    grid-area: main-nav-left ;
   }
-  .five {
-    grid-column: 2;
-    grid-row: 4;
+  .main-nav-right {
+    grid-area: main-nav-right;
+    ul {
+     display: flex;
+     justify-content: space-evenly; 
+    li {
+      display: inline-block;
+      padding: 2px 5px 2px 5px;
+    text-align: center;
+    width: 100%;
+      &:hover {
+        cursor: pointer;
+      background-color: coral;
+        color: white;
+      }
+    }
   }
-  .six {
-    grid-column: 3;
-    grid-row: 4;
+  }
+  .left-aside {
+    grid-area: left-aside;
+  }
+  .main-container {
+    grid-area: main-container;
+  }
+  .footer {
+    grid-area: footer;
   }
   

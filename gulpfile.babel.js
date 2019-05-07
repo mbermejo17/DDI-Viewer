@@ -12,6 +12,7 @@ import source from 'vinyl-source-stream';
 import sourcemaps from 'gulp-sourcemaps';
 import buffer from 'vinyl-buffer';
 import nodemon from 'gulp-nodemon';
+import autoprefixer from 'gulp-autoprefixer';
 
 
 
@@ -103,7 +104,7 @@ gulp.task('styles2', () =>
 
 
 
-//gulp.task('build', ['jsindex', 'jsdashboard']);
+
 
 //gulp.task('start', ['browser-sync'], function() {});
 
@@ -116,11 +117,15 @@ gulp.task('styles2', () =>
 //}); 
 
 gulp.task('style', () =>
-    gulp.src('./src/scss/app.scss')
+    gulp.src('./src/scss/*.scss')
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(plumber())
     .pipe(sass())
-    .pipe(postcss(postcssPlugins))
+    .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
+    //.pipe(postcss(postcssPlugins))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./build/css'))
     .pipe(server.stream({ match: '**/*.css' }))
@@ -144,10 +149,11 @@ gulp.task('js', () =>
 );
 
 gulp.task('html', () =>{
-    gulp.src('./src/views/index.html')
+    gulp.src('./src/views/*.html')
         .pipe(gulp.dest('./build/'));
 });
 
+gulp.task('build', gulp.parallel('style', 'html', 'js'));
 
 gulp.task('nodemon', function(cb) {
 

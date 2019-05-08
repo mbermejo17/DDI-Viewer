@@ -1,8 +1,18 @@
 
+@import './components/global-settings';
+@font-face {
+  font-family: "ProximaNovaSemibold";
+  src: url(../fonts/FontsFree-Net-Proxima-Nova-.ttf);
+  font-weight: bold;
+}
 
 * {box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color:#F2F2F2 ;
 }
 .wrapper {
   width: 90vw;
@@ -19,6 +29,7 @@
     "main-nav-left main-nav-right main-nav-right main-nav-right"
     "left-aside main-container main-container main-container"
     "footer footer footer footer";
+  background-color: #FFFFFF;  
   }
 
   @media only screen and (max-width: 640px)  {
@@ -52,17 +63,18 @@
   }
 
   .wrapper > div {
-    border: 1px solid rgb(233,171,88);
-    border-radius: 2px;
+    /* border: 1px solid rgb(233,171,88);
+    border-radius: 2px; */
     /*background-color: rgba(233,171,88,.5);*/
     padding: 0.6em;
-    color: #d9480f;
+    color: var(--header-color);
   }
   .main-header {
     grid-area: main-header;
     display:flex;
     justify-content: space-around;
     align-items: center;
+    border-bottom: 1px solid var(--header-color);
   }
   .main-header-logo {
     height: 100%;
@@ -82,6 +94,20 @@
   .main-header-session {
     width: 20%;
     text-align: center;
+    color: var(--header-color);
+    .user-title {
+      width: 40%;
+      text-align:right; 
+      padding-left: 15px; 
+      padding-right: 5px; 
+    }
+    .user-name {
+      width: 40%;
+      text-align:left; 
+      font-weight: bold;
+      padding-left: 15px; 
+      padding-right: 5px; 
+    }
   }
 
   .main-nav-left {
@@ -89,12 +115,15 @@
     img {
       width: .8em;
     }
+    border-bottom: 1px solid var(--header-color);
   }
   .main-nav-right {
     grid-area: main-nav-right;
      display: flex;
      justify-content: space-around; 
      align-items: center;
+     background-color: var(--nav-bar-bg-color);
+     border-bottom: 1px solid var(--header-color);
   }
   .main-nav-menu {
     display: flex;
@@ -102,14 +131,17 @@
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    background-color: var(--nav-bar-bg-color);
     a {
       text-decoration: none;
       padding: 2px 5px 2px 5px;
       text-align: center;
+      color: var(--nav-bar-color);
+      font-family: "ProximaNovaSemibold";
+      font-weight: bold;
       &:hover {
         cursor: pointer;
-        background-color: coral;
-        color: white;
+        color: var(--nav-bar-text-hover-color);
       }
     }
   }
@@ -145,5 +177,6 @@
   }
   .footer {
     grid-area: footer;
+    border-top: 1px solid var(--header-color);
   }
   

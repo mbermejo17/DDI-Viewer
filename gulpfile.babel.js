@@ -155,13 +155,33 @@ gulp.task('html', () =>{
 
 gulp.task('build', gulp.parallel('style', 'html', 'js'));
 
+function reload() {
+    browserSync.reload();
+}
+
+gulp.task('serve', function() {
+    browserSync.init({
+        server: "./build"
+    });
+    gulp.watch('./css/*.css').on('change', function () {
+        browserSync.reload();
+    });
+    watch('./src/scss/**/*.scss', 'style');
+    watch('./src/js/**/*.js', 'js');
+    watch('./src/views/*.html', 'html');
+    watch("./build/**/*.*", reload);
+});
+
+
+
 gulp.task('nodemon', function(cb) {
 
     var started = false;
 
 
-    watch('./scss/**/*.scss', () => gulp.start('styles', browserSync.reload()));
-    watch('./js/**/*.js', () => gulp.start('scripts', browserSync.reload()));
+    watch('./src/scss/**/*.scss', () => gulp.start('style', browserSync.reload()));
+    watch('./src/views/*.html', () => gulp.start('html', browserSync.reload()));
+    watch('./src/js/**/*.js', () => gulp.start('js', browserSync.reload()));
     //watch('./src/examples/**/*.pug', () => gulp.start('pug', browserSync.reload()));
 
     return nodemon({

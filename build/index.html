@@ -25,59 +25,31 @@
         </div>
                 <div class="main-nav-left">
             <input type="search" name="" id="">
-            <img src="img/magnifying-glass.svg" alt="" srcset="">
+            <img id="iBtnSearch" src="img/magnifying-glass.svg" alt="" srcset="">
         </div>
         <div class="main-nav-right">
-            <div class="main-nav-menu"><a href="#">M1</a>
-                <a href="#">M2</a>
-                <a href="#">M3</a>
-                <a href="#">M4</a>
-                <a href="#">M5</a>
-                <a href="#">M6</a>
+            <div class="main-nav-menu">
+                <a href="#">Home</a>
+                <a href="#">DNS</a>
+                <a href="#">DHCP</a>
+                <a href="#">Tools</a>
             </div>
         </div>
-        <div class="left-aside custom-scrollbar">Tree View
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Quae, praesentium ullam? Fugiat beatae at illum cumque, fuga esse sed officiis, 
-                corporis explicabo ducimus perferendis id? Neque debitis numquam cupiditate atque.
-                <br>
-                <br>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Odit doloribus numquam illo quod tempore quis nesciunt mollitia, 
-                asperiores reiciendis? Eum consequuntur quas voluptatum quos ullam alias rem itaque vero in.
-                <br>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Odit doloribus numquam illo quod tempore quis nesciunt mollitia, 
-                asperiores reiciendis? Eum consequuntur quas voluptatum quos ullam alias rem itaque vero in.
-                <br><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Quae, praesentium ullam? Fugiat beatae at illum cumque, fuga esse sed officiis, 
-                corporis explicabo ducimus perferendis id? Neque debitis numquam cupiditate atque.
-                <br>
-                <br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Quae, praesentium ullam? Fugiat beatae at illum cumque, fuga esse sed officiis, 
-                corporis explicabo ducimus perferendis id? Neque debitis numquam cupiditate atque.
-                <br>
-                <br>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Odit doloribus numquam illo quod tempore quis nesciunt mollitia, 
-                asperiores reiciendis? Eum consequuntur quas voluptatum quos ullam alias rem itaque vero in.
-                <br>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Odit doloribus numquam illo quod tempore quis nesciunt mollitia, 
-                asperiores reiciendis? Eum consequuntur quas voluptatum quos ullam alias rem itaque vero in.
-                <br><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Quae, praesentium ullam? Fugiat beatae at illum cumque, fuga esse sed officiis, 
-                corporis explicabo ducimus perferendis id? Neque debitis numquam cupiditate atque.
-                <br>
-                <br>
-            </p>
+        <div class="left-aside custom-scrollbar">
+            <div id="MenuTree">
+                <div class="MenuTree-content content">
+                    <p><a href="#" id="tree-expand-all">Expand all</a> | <a href="#" id="tree-collapse-all">Collapse all</a></p>
+                    <ul id="tree">
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="main-container">Main</div>
         <div class="footer">Footer</div>
     </div>
+    
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/abixTreeList.min.js"></script>
     <script src="js/index.min.js"></script>
 </body>
 

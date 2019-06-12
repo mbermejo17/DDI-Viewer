@@ -1,6 +1,8 @@
 
 @import './components/global-settings';
 @import './components/_notify';
+@import './components/abixTreeList';
+@import './components/modal';
 @font-face {
   font-family: "ProximaNovaSemibold";
   src: url(../fonts/FontsFree-Net-Proxima-Nova-.ttf);
@@ -32,6 +34,10 @@ body {
   background-color: #FFFFFF; 
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
   }
+
+  #iBtnSearch:hover {
+    cursor: pointer;
+  } 
 
   @media only screen and (max-width: 640px)  {
     .wrapper {

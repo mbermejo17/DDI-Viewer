@@ -15,7 +15,7 @@
       border-radius: 50%;
       box-shadow: 1px 1px 1px gray;
     }
-    .notify-bubble:hover { cursor: pointer}
+    .notify-bubble:hover { cursor: pointer; box-shadow: 2px 2px 2px rgb(146, 145, 145)}
     .notify-bubble.info { background-color: dodgerblue; color: white}
     .notify-bubble.warning { background-color: yellow; color: black}   
     .notify-bubble.error { background-color: red; color: white}
